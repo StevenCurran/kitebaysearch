@@ -11,3 +11,5 @@ target/
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
+tomcat.8080/work/Tomcat/localhost/_/WEB-INF/classes/logback.xml
+tomcat.8080/work/Tomcat/localhost/_/WEB-INF/classes/randomdata.csv.compressed
