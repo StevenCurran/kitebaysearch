@@ -1,18 +1,18 @@
 Ext.define("Starter.model.User",
 {
   extend : "Ext.data.Model",
-	fields: [ {
+  fields : [ {
     name : "id",
     type : "string"
-	}, {
+  }, {
     name : "firstName",
     type : "string",
     convert : null
-	}, {
+  }, {
     name : "lastName",
     type : "string",
     convert : null
-	}, {
+  }, {
     name : "email",
     type : "string",
     convert : null
@@ -20,24 +20,24 @@ Ext.define("Starter.model.User",
     name : "department",
     type : "string",
     convert : null
-	} ],
-	validations: [ {
+  } ],
+  validations : [ {
     type : "presence",
     field : "lastName"
-	}, {
+  }, {
     type : "email",
     field : "email"
-	} ],
-	proxy: {
+  } ],
+  proxy : {
     type : "direct",
-		api: {
+    api : {
       read : "storeService.read",
       create : "storeService.create",
       update : "storeService.update",
       destroy : "storeService.destroy"
-		},
-		reader: {
+    },
+    reader : {
       root : "records"
-		}
-	}
+    }
+  }
 });
