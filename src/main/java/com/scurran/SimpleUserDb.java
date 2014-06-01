@@ -33,8 +33,8 @@ public class SimpleUserDb {
 
 	private final ImmutableList<String> departments;
 
-
-	Resource randomdata = new ClassPathResource("/randomdata.csv.compressed");
+    @Autowired
+	Resource randomdata;
 
 	public SimpleUserDb() {
 		departments = ImmutableList
