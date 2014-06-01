@@ -5,6 +5,8 @@ import com.google.common.cache.CacheLoader;
 import com.google.common.cache.LoadingCache;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 /**
@@ -29,6 +31,14 @@ public class PostCache {
 
 
     public static synchronized void addPosts(List<KitebayPost> posts) {
+
+        Collections.sort(posts, new Comparator<KitebayPost>() {
+            public int compare(KitebayPost o1, KitebayPost o2) {
+                if (o1.getInitialPost().getUpdatedTime() == null || o2.getInitialPost().getUpdatedTime() == null)
+                    return 0;
+                return o1.getInitialPost().getUpdatedTime().compareTo(o2.getInitialPost().getUpdatedTime()); // may have to change this round
+            }
+        });
 
         for (KitebayPost post : posts) {
             postCache.put(post.getId(), post);

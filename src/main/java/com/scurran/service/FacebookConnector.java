@@ -60,6 +60,8 @@ public class FacebookConnector {
             posts = posts.subList(storeRequest.getStart(),
                     Math.min(totalSize, storeRequest.getStart() + storeRequest.getLimit()));
         }
+        System.out.println(posts.get(0).getMessage());
+        System.out.println(posts.get(1).getMessage());
 
         return new ExtDirectStoreResult<>(totalSize, posts);
     }

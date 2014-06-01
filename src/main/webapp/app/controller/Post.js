@@ -23,7 +23,7 @@ Ext.define('Starter.controller.Post', {
             },
             'postpanel button[action=fblogin]': {
                 //click: this.fblogin
-                click: function(){
+                click: function () {
                     FB.getLoginStatus(function (response) {
                         if (response.status === 'connected') {
                             console.log('Logged in.');
@@ -50,15 +50,15 @@ Ext.define('Starter.controller.Post', {
     },
 
     onChange: function (field, newValue) {
-        /*
-         var myStore = this.getUsersStore();
-         if (newValue) {
-         myStore.clearFilter(true);
-         myStore.filter('filter', newValue);
-         } else {
-         myStore.clearFilter();
-         }
-         */
+
+        var myStore = this.getPostsStore();
+        if (newValue) {
+            myStore.clearFilter(true);
+            myStore.filter('filter', newValue);
+        } else {
+            myStore.clearFilter();
+        }
+
     },
 
     onItemClick: function (button, record) {
@@ -74,16 +74,10 @@ Ext.define('Starter.controller.Post', {
     },
 
     newUser: function () {
-        /*
-         var newUser = this.getUserModel().create({
-         lastName: 'New',
-         firstName: 'Person',
-         email: 'new@email.com'
-         });
+        //sort the store
+        console.log("writing");
+        this.getPostsStore().sort();
 
-         this.getUsersStore().insert(0, newUser);
-         this.getStorePanel().getPlugin('storePanelRowEditing').startEdit(0, 0);
-         */
     }
     /*
      ,

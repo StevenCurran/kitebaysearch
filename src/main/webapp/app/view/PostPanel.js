@@ -22,6 +22,13 @@ Ext.define('Starter.view.PostPanel', {
                 },
                 {
                     xtype: 'gridcolumn',
+                    dataIndex: 'updatedTime',
+                    text: 'Updated Time',
+                    //renderer: Ext.util.Format.dateRenderer('M d, Y'),
+                    flex: 1
+                },
+                {
+                    xtype: 'gridcolumn',
                     dataIndex: 'message',
                     text: 'Message',
                     flex: 1,

@@ -10,7 +10,12 @@ Ext.define("Starter.model.Post",
                 name: "message",
                 type: "string",
                 convert: null
+            },
+            {
+                name: "updatedTime",
+                type: "string"
             }
+
         ],
         proxy: {
             type: "direct",

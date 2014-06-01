@@ -43,7 +43,7 @@ public class CachePopulator {
         private void populate() {
 
             FacebookClient facebookClient = new DefaultFacebookClient(new DefaultFacebookClient().obtainAppAccessToken(MY_ACCESS_TOKEN, MY_APP_SECRET).getAccessToken());
-            Connection<Post> kitebayPosts = facebookClient.fetchConnection(KITEBAY_PID + "/feed", Post.class, Parameter.with("limit", "250"));
+            Connection<Post> kitebayPosts = facebookClient.fetchConnection(KITEBAY_PID + "/feed", Post.class, Parameter.with("limit", "20"));
 
             List<KitebayPost> posts = new ArrayList<>();
             for (Post post : kitebayPosts.getData()) {

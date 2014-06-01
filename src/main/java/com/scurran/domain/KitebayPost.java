@@ -3,6 +3,7 @@ package com.scurran.domain;
 import com.restfb.types.Photo;
 import com.restfb.types.Post;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -108,5 +109,10 @@ store.each(function(record){
     @Override
     public String getId() {
         return initialPost.getId();
+    }
+
+    @Override
+    public Date getUpdatedTime() {
+        return initialPost.getUpdatedTime();
     }
 }
