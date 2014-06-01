@@ -7,16 +7,14 @@ import ch.ralscha.extdirectspring.filter.StringFilter;
 import com.google.common.cache.CacheBuilder;
 import com.google.common.cache.CacheLoader;
 import com.google.common.cache.LoadingCache;
-import com.google.common.collect.Ordering;
-import com.restfb.*;
-import com.restfb.types.Group;
+import com.restfb.Connection;
+import com.restfb.DefaultFacebookClient;
+import com.restfb.FacebookClient;
+import com.restfb.Parameter;
 import com.restfb.types.Post;
 import org.springframework.stereotype.Service;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.concurrent.ExecutionException;
 
 import static ch.ralscha.extdirectspring.annotation.ExtDirectMethodType.STORE_READ;
 
@@ -29,7 +27,7 @@ public class FacebookConnector {
     private static String MY_ACCESS_TOKEN = "733433380012793";
     private static String MY_APP_SECRET = "4a11148f58820f290a554854577a9593";
     //public static FacebookClient facebookClient = new DefaultFacebookClient(MY_ACCESS_TOKEN, MY_APP_SECRET);
-    public static FacebookClient facebookClient = new DefaultFacebookClient("CAACEdEose0cBALx8nRrMkJvRLY1ISyeNPGUoDav8tpsGSHZBYvgMfJrU45v947ZCokGj1w652ERWUr4c7ZAKZAVcAUZCyGZCHteHDjDaMW0yoHXcEI1wNL81Yvg6ZCtTuMQoW4AruRjGWQUzHKd9EWmSenjHon0CBQRfNYWcavDICS0ICZCXRHhrv1hoZApnIY7EWdCZBVL54xfwZDZD");
+    public static FacebookClient facebookClient = new DefaultFacebookClient("CAACEdEose0cBAIlZCvZAraDfovxJd53Rv6hq8RmR56CSEY2jipG957HShp5MwWgb50rT0nxDZA2JTgcnstX41ZAld2SKfBombZAOAptqMRR204kbO6O8rZBTCx6lLBMZCORcHX3taiZAPvsCyIHPJwlXmhh6ndOhlmJQ6oeiHZAGt7GWYZC76eVPV3528p8NH9z3PmE6kbv7yVnwZDZD");
     public static final String KITEBAY_PID = "283893765028577";
 
     private static CacheLoader<String, Post> POST_CACHE_LOADER = new CacheLoader<String, Post>() {
@@ -42,7 +40,7 @@ public class FacebookConnector {
 
     private static LoadingCache<String, Post> postCache = CacheBuilder.newBuilder().maximumSize(100).build(POST_CACHE_LOADER);
 
-    public static List<Post> getPosts(){
+    public static List<Post> getPosts() {
         Connection<Post> kitebayPosts = facebookClient.fetchConnection(KITEBAY_PID + "/feed", Post.class, Parameter.with("limit", "100"));
         List<Post> data = kitebayPosts.getData();
         for (Post post : data) {
@@ -50,6 +48,7 @@ public class FacebookConnector {
         }
 
         return kitebayPosts.getData();
+        //http://stackoverflow.com/questions/16419144/get-picture-object-from-facebook-post-with-graph-api
     }
 
 
