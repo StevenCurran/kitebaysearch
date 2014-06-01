@@ -42,6 +42,10 @@ Ext.define('Starter.view.PostPanel', {
                     dock: 'top',
                     items: [
                         {
+                            text: 'Facebook Login',
+                            action: 'fblogin'
+                        },
+                        {
                             text: 'New',
                             action: 'new'
                         },

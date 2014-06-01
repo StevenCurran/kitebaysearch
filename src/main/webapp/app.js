@@ -20,5 +20,6 @@ Ext.application({
 	name: 'Starter',
 	launch: function() {
 		Ext.fly('appLoadingIndicator').destroy();
+
 	}
 });
