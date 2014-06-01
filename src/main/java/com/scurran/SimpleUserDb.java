@@ -13,6 +13,7 @@ import java.util.zip.InflaterInputStream;
 import javax.annotation.PostConstruct;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
@@ -32,8 +33,8 @@ public class SimpleUserDb {
 
 	private final ImmutableList<String> departments;
 
-	@Autowired
-	Resource randomdata;
+
+	Resource randomdata = new ClassPathResource("/randomdata.csv.compressed");
 
 	public SimpleUserDb() {
 		departments = ImmutableList
