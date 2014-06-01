@@ -15,7 +15,8 @@ Ext.require('Ext.direct.*', function() {
 });
 
 Ext.application({
-	controllers: [ 'Poll', 'User', 'Form', 'Post'],
+	//controllers: [ 'Poll', 'User', 'Form', 'Post'],
+    controllers: ['Post'],
 	autoCreateViewport: true,
 	name: 'Starter',
 	launch: function() {

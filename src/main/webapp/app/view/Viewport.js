@@ -6,12 +6,15 @@ Ext.define('Starter.view.Viewport', {
         align: 'stretch',
         type: 'vbox'
     },
+    /*
+     requires: [ 'Starter.view.StorePanel',
+     'Starter.view.PollPanel',
+     'Starter.view.FormPanel',
+     'Starter.view.TreePanel',
+     'Starter.view.PostPanel'],
+     */
+    requires: [ 'Starter.view.PostPanel'],
 
-    requires: [ 'Starter.view.StorePanel',
-        'Starter.view.PollPanel',
-        'Starter.view.FormPanel',
-        'Starter.view.TreePanel',
-        'Starter.view.PostPanel'],
 
     initComponent: function () {
         this.items = [
@@ -24,38 +27,12 @@ Ext.define('Starter.view.Viewport', {
                 flex: 1,
                 items: [
                     {
-                        xtype: 'storepanel',
-                        flex: 1,
-                        margins: 5
-                    },
-                    {
-                        xtype: 'pollpanel',
-                        flex: 1,
-                        margins: 5
-                    },
-                    {
                         xtype: 'postpanel',
                         flex: 1,
                         margins: 5
                     }
 
                 ]
-            },
-            {
-                xtype: 'container',
-                layout: {
-                    align: 'stretch',
-                    type: 'hbox'
-                },
-                flex: 1,
-                items: [ Ext.create('Starter.view.FormPanel', {
-                    flex: 1,
-                    margins: 5
-                }), {
-                    xtype: 'companytreepanel',
-                    flex: 1,
-                    margins: 5
-                } ]
             }
         ];
 
