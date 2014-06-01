@@ -3,12 +3,15 @@ package com.scurran.domain;
 import com.restfb.types.Photo;
 import com.restfb.types.Post;
 
+import java.util.List;
+
 public class KitebayPostBuilder {
     private String postId;
     private Post initialPost;
     private PostType type;
     private Brand brand;
     private Product product;
+    private List<Photo.Image> postImages;
 
 
     public KitebayPostBuilder setPostId(String postId) {
@@ -36,7 +39,13 @@ public class KitebayPostBuilder {
         return this;
     }
 
+    public KitebayPostBuilder setPostImages(List<Photo.Image> postImages) {
+        this.postImages= postImages;
+        return this;
+    }
+
+
     public KitebayPost createKitebayPost() {
-        return new KitebayPost(postId, initialPost, type, brand, product);
+        return new KitebayPost(postId, initialPost, type, brand, product, postImages);
     }
 }

@@ -8,7 +8,7 @@ import java.util.List;
 /**
  * Created by Steven Curran on 01/06/14.
  */
-public class KitebayPost {
+public class KitebayPost extends Post{
 
     private String postId;
     private Post initialPost;
@@ -16,7 +16,23 @@ public class KitebayPost {
     private Brand brand;
     private Product product;
     private List<Photo.Image> postImages;
+/*
 
+
+
+myPhoto = new Ext.Component({
+    autoEl: { tag: 'img', src: 'image.gif'}
+});
+
+myPhoto.el.dom.src = newImageSource;
+
+yourCarousel = Ext.getCmp('your_carousel_id');
+store.each(function(record){
+                    yourCarousel.add({
+                        html: '<img src=' + record.get('url') + '/>'
+                    });
+                });
+ */
 
 
     public KitebayPost(String postId, Post initialPost, PostType type, Brand brand, Product product, List<Photo.Image> postImages) {
@@ -26,6 +42,14 @@ public class KitebayPost {
         this.brand = brand;
         this.product = product;
         this.postImages = postImages;
+    }
+
+    public KitebayPost() {
+
+    }
+
+    public KitebayPost(Post user) {
+        this.initialPost = user;
     }
 
     public String getPostId() {
@@ -44,7 +68,7 @@ public class KitebayPost {
         this.initialPost = initialPost;
     }
 
-    public PostType getType() {
+    public PostType getPostType() {
         return type;
     }
 
@@ -76,4 +100,13 @@ public class KitebayPost {
         this.postImages = postImages;
     }
 
+    @Override
+    public String getMessage() {
+        return initialPost.getMessage();
+    }
+
+    @Override
+    public String getId() {
+        return initialPost.getId();
+    }
 }
