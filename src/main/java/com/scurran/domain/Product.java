@@ -3,6 +3,18 @@ package com.scurran.domain;
 /**
  * Created by Steven Curran on 01/06/14.
  */
-public enum Product {
-    FOIL, LEI, RACE_BOARD, TT_BOARD, WAKE_BOARD, SURF_BOARD, WETSUIT, HARNESS, ACCESSORY;
+public enum Product implements MenuItem {
+
+
+    FOIL("Foil"), LEI("Water"), RACE_BOARD("Race Board"), TT_BOARD("Twin Tip"), WAKE_BOARD("Wake Style"), SURF_BOARD("Surf"), WETSUIT("Wetsuit"), HARNESS("Harness"), ACCESSORY("Accessory");
+
+    private final String term;
+
+    Product(String term) {
+        this.term = term;
+    }
+
+    public String getTerm() {
+        return term;
+    }
 }

@@ -29,11 +29,12 @@ Ext.define('Starter.view.Viewport', {
                 items: [
                 */
                     {
-                        xtype: 'treepanel',
+                        xtype: 'companytreepanel',
                         flex: 1,
                         margins: 5,
                         region : 'west',
-                        collapsible: true
+                        collapsible: true,
+                        resizable: true
                     },
                     {
                         xtype: 'postpanel',

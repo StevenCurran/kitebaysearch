@@ -19,7 +19,9 @@ Ext.define('Starter.controller.Post', {
     init: function () {
         this.control({
             'postpanel': {
-                itemclick: this.onItemClick
+                itemclick: this.onItemClick,
+                itemmouseenter: this.onMouseEnter
+
             },
             'postpanel button[action=fblogin]': {
                 //click: this.fblogin
@@ -63,6 +65,11 @@ Ext.define('Starter.controller.Post', {
 
     onItemClick: function (button, record) {
         this.getDeleteButton().enable();
+    },
+
+    onMouseEnter : function(theitem, record, item, index, e, eOpts){
+        console.log(record.data.id);
+
     },
 
     deleteUser: function () {

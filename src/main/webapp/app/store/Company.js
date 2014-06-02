@@ -9,6 +9,7 @@ Ext.define('Starter.store.Company', {
 
     proxy: {
         type: 'direct',
-        directFn: treeLoadService.getTree
+        //directFn: treeLoadService.getTree
+        directFn: menuLoadService.getTree
     }
 });
