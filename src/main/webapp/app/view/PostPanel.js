@@ -12,16 +12,6 @@ Ext.define('Starter.view.PostPanel', {
             columns: [
                 {
                     xtype: 'gridcolumn',
-                    dataIndex: 'id',
-                    text: 'Post Id',
-                    flex: 1,
-                    editor: {
-                        xtype: 'textfield',
-                        allowBlank: true
-                    }
-                },
-                {
-                    xtype: 'gridcolumn',
                     dataIndex: 'updatedTime',
                     text: 'Updated Time',
                     //renderer: Ext.util.Format.dateRenderer('M d, Y'),
@@ -31,7 +21,7 @@ Ext.define('Starter.view.PostPanel', {
                     xtype: 'gridcolumn',
                     dataIndex: 'message',
                     text: 'Message',
-                    flex: 1,
+                    flex: 5,
                     editor: {
                         xtype: 'textfield',
                         allowBlank: true

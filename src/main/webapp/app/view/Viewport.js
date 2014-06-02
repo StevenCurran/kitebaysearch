@@ -2,23 +2,24 @@ Ext.define('Starter.view.Viewport', {
     extend: 'Ext.Viewport',
     id: 'viewport',
 
-    layout: {
-        align: 'stretch',
-        type: 'vbox'
-    },
     /*
+     layout: {
+     align: 'stretch',
+     type: 'vbox'
+     },
      requires: [ 'Starter.view.StorePanel',
      'Starter.view.PollPanel',
      'Starter.view.FormPanel',
      'Starter.view.TreePanel',
      'Starter.view.PostPanel'],
      */
-    requires: [ 'Starter.view.PostPanel'],
-
+    requires: [ 'Starter.view.TreePanel', 'Starter.view.PostPanel'],
+    layout: 'border',
 
     initComponent: function () {
         this.items = [
-            {
+            //{
+                /*
                 xtype: 'container',
                 layout: {
                     align: 'stretch',
@@ -26,14 +27,24 @@ Ext.define('Starter.view.Viewport', {
                 },
                 flex: 1,
                 items: [
+                */
+                    {
+                        xtype: 'treepanel',
+                        flex: 1,
+                        margins: 5,
+                        region : 'west',
+                        collapsible: true
+                    },
                     {
                         xtype: 'postpanel',
-                        flex: 1,
-                        margins: 5
+                        flex: 5,
+                        margins: 5,
+                        collapsible: false,
+                        region : 'center'
                     }
 
-                ]
-            }
+             //  ]
+         //   }
         ];
 
         this.callParent(arguments);
