@@ -1,3 +1,13 @@
+var myForm = new Ext.form.Panel({
+    width: 500,
+    height: 400,
+   // title: record.data.id,
+    floating: true,
+    closable : true,
+    hidden: true
+});
+
+
 Ext.define('Starter.controller.Post', {
     extend: 'Ext.app.Controller',
 
@@ -56,7 +66,9 @@ Ext.define('Starter.controller.Post', {
         var myStore = this.getPostsStore();
         if (newValue) {
             myStore.clearFilter(true);
-            myStore.filter('filter', newValue);
+            //myStore.filter('filter', newValue); //fiter by text
+            myStore.filter('message', '/' + newValue + '/'); //fiter by text
+            console.log('/' + newValue + '/');
         } else {
             myStore.clearFilter();
         }
@@ -65,6 +77,15 @@ Ext.define('Starter.controller.Post', {
 
     onItemClick: function (button, record) {
         this.getDeleteButton().enable();
+
+        myForm.hide();
+        myForm.title = record.data.id;
+
+//        myForm.close();
+
+
+        myForm.show();
+
     },
 
     onMouseEnter : function(theitem, record, item, index, e, eOpts){
