@@ -11,23 +11,23 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 @Configuration
-@ComponentScan(basePackages = { "ch.ralscha.extdirectspring", "com.scurran" })
+@ComponentScan(basePackages = {"ch.ralscha.extdirectspring", "com.scurran"})
 @EnableWebMvc
 public class SpringConfig extends WebMvcConfigurerAdapter {
 
-	@Override
-	public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
-		configurer.enable();
-	}
+    @Override
+    public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
+        configurer.enable();
+    }
 
-	@Bean
-	public MultipartResolver multipartResolver() {
-		return new CommonsMultipartResolver();
-	}
+    @Bean
+    public MultipartResolver multipartResolver() {
+        return new CommonsMultipartResolver();
+    }
 
-	@Bean
-	public ClassPathResource randomdata() {
-		return new ClassPathResource("/randomdata.csv.compressed");
-	}
+    @Bean
+    public ClassPathResource randomdata() {
+        return new ClassPathResource("/randomdata.csv.compressed");
+    }
 
 }

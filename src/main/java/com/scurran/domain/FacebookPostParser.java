@@ -10,7 +10,7 @@ import java.util.List;
  */
 public class FacebookPostParser {
 
-    public static void parsePosts(List<Post> posts){
+    public static void parsePosts(List<Post> posts) {
         List<KitebayPost> myPosts = new ArrayList<>();
 
     }

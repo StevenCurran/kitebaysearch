@@ -9,7 +9,7 @@ import java.util.List;
 /**
  * Created by Steven Curran on 01/06/14.
  */
-public class KitebayPost extends Post{
+public class KitebayPost extends Post {
 
     private String postId;
     private Post initialPost;

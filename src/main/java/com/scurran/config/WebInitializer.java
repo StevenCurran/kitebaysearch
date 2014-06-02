@@ -10,37 +10,37 @@ import javax.servlet.ServletException;
 
 public class WebInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
 
-	@Override
-	public void onStartup(ServletContext servletContext) throws ServletException {
-		servletContext.setInitParameter("spring.profiles.default", "production");
+    @Override
+    public void onStartup(ServletContext servletContext) throws ServletException {
+        servletContext.setInitParameter("spring.profiles.default", "production");
 
-		CharacterEncodingFilter characterEncodingFilter = new CharacterEncodingFilter();
-		characterEncodingFilter.setEncoding("UTF-8");
-		characterEncodingFilter.setForceEncoding(true);
-		servletContext.addFilter("characterEncodingFilter", characterEncodingFilter).addMappingForUrlPatterns(null,
-				false, "/*");
+        CharacterEncodingFilter characterEncodingFilter = new CharacterEncodingFilter();
+        characterEncodingFilter.setEncoding("UTF-8");
+        characterEncodingFilter.setForceEncoding(true);
+        servletContext.addFilter("characterEncodingFilter", characterEncodingFilter).addMappingForUrlPatterns(null,
+                false, "/*");
 
-		super.onStartup(servletContext);
-	}
+        super.onStartup(servletContext);
+    }
 
-	@Override
-	protected Class<?>[] getRootConfigClasses() {
-		return new Class[] { SpringConfig.class };
-	}
+    @Override
+    protected Class<?>[] getRootConfigClasses() {
+        return new Class[]{SpringConfig.class};
+    }
 
-	@Override
-	protected Class<?>[] getServletConfigClasses() {
-		return null;
-	}
+    @Override
+    protected Class<?>[] getServletConfigClasses() {
+        return null;
+    }
 
-	@Override
-	protected WebApplicationContext createServletApplicationContext() {
-		return new GenericWebApplicationContext();
-	}
+    @Override
+    protected WebApplicationContext createServletApplicationContext() {
+        return new GenericWebApplicationContext();
+    }
 
-	@Override
-	protected String[] getServletMappings() {
-		return new String[] { "/" };
-	}
+    @Override
+    protected String[] getServletMappings() {
+        return new String[]{"/"};
+    }
 
 }

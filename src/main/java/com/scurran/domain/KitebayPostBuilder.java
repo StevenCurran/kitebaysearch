@@ -40,7 +40,7 @@ public class KitebayPostBuilder {
     }
 
     public KitebayPostBuilder setPostImages(List<Photo.Image> postImages) {
-        this.postImages= postImages;
+        this.postImages = postImages;
         return this;
     }
 

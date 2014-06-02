@@ -1,14 +1,14 @@
 Ext.define('Starter.store.Company', {
-	extend: 'Ext.data.TreeStore',
+    extend: 'Ext.data.TreeStore',
 
-	autoLoad: true,
+    autoLoad: true,
 
-	root: {
-		expanded: true
-	},
+    root: {
+        expanded: true
+    },
 
-	proxy: {
-		type: 'direct',
-		directFn: treeLoadService.getTree
-	}
+    proxy: {
+        type: 'direct',
+        directFn: treeLoadService.getTree
+    }
 });

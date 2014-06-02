@@ -149,7 +149,7 @@
                 <configuration>
                     <path>/</path>
                 </configuration>
-                
+
             </plugin>
 
             <plugin>
@@ -298,8 +298,6 @@
             </plugin>
 
         </plugins>
-
-
 
 
         <pluginManagement>
