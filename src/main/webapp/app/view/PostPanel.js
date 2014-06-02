@@ -2,7 +2,7 @@ Ext.define('Starter.view.PostPanel', {
     extend: 'Ext.grid.Panel',
     alias: 'widget.postpanel',
 
-    title: 'Show Facebook Posts',
+    title: 'Kitebay Listings',
     store: 'Posts',
 
     initComponent: function () {
@@ -12,16 +12,23 @@ Ext.define('Starter.view.PostPanel', {
             columns: [
                 {
                     xtype: 'gridcolumn',
-                    dataIndex: 'updatedTime',
-                    text: 'Updated Time',
+                    dataIndex: 'brand',
+                    text: 'Brand',
+                    //renderer: Ext.util.Format.dateRenderer('M d, Y'),
+                    flex: 1
+                },
+                {
+                    xtype: 'gridcolumn',
+                    dataIndex: 'product',
+                    text: 'Product Type',
                     //renderer: Ext.util.Format.dateRenderer('M d, Y'),
                     flex: 1
                 },
                 {
                     xtype: 'gridcolumn',
                     dataIndex: 'message',
-                    text: 'Message',
-                    flex: 5,
+                    text: 'Post Content',
+                    flex: 10,
                     editor: {
                         xtype: 'textfield',
                         allowBlank: true

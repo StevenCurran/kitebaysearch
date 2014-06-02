@@ -1,17 +1,12 @@
 package com.scurran.service;
 
 import ch.ralscha.extdirectspring.annotation.ExtDirectMethod;
-import com.google.common.base.Function;
-import com.google.common.collect.Collections2;
 import com.google.common.collect.ImmutableList;
-import com.scurran.User;
+import com.scurran.domain.Brand;
 import com.scurran.domain.MenuItem;
 import com.scurran.domain.Product;
-import com.scurran.util.PropertyOrderingFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
-
-import java.util.List;
 
 import static ch.ralscha.extdirectspring.annotation.ExtDirectMethodType.TREE_LOAD;
 
@@ -29,14 +24,34 @@ public class MenuLoadService {
             root.expanded = true;
 
             ImmutableList.Builder<Node> builder = ImmutableList.builder();
+
+
+            ImmutableList.Builder<Node> brandBuilder = ImmutableList.builder();
+
+            Node cNode1 = new Node();
+            cNode1.id = "brand";
+            cNode1.text = "Brand";
+            cNode1.leaf = false;
+            builder.add(cNode1);
+
+            for (Brand brand : Brand.values()) {
+                Node child = new Node();
+                child.id = brand.name();
+                child.text = brand.getBrandName();
+                child.leaf = true;
+                brandBuilder.add(child);
+            }
+            cNode1.children = brandBuilder.build();
+
             for (Product product : Product.values()) {
                 Node child = new Node();
                 child.id = product.name();
                 child.text = product.getTerm();
-                child.leaf = false;
+                child.leaf = true;
                 builder.add(child);
             }
             root.children = builder.build();
+
 
             return ImmutableList.<Node>builder().add(root).build();
         }

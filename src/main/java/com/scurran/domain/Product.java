@@ -17,4 +17,9 @@ public enum Product implements MenuItem {
     public String getTerm() {
         return term;
     }
+
+    @Override
+    public String toString() {
+        return getTerm();
+    }
 }

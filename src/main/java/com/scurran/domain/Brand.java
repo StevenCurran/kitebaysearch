@@ -11,7 +11,7 @@ public enum Brand {
     FONE("F-One"),
     OZONE("Ozone"),
     CABRINHA("Cabrinha"),
-    AIRRUSH("AIRRUSH");
+    AIRRUSH("Airrush");
 
     private final String brand;
 
@@ -21,5 +21,10 @@ public enum Brand {
 
     public String getBrandName() {
         return brand;
+    }
+
+    @Override
+    public String toString() {
+        return getBrandName();
     }
 }

@@ -2,7 +2,7 @@ Ext.define('Starter.view.TreePanel', {
     extend: 'Ext.tree.Panel',
     alias: 'widget.companytreepanel',
 
-    title: 'TREE_LOAD',
+    title: 'FIlter Criteria',
     store: Ext.create('Starter.store.Company'),
     rootVisible: false
 
