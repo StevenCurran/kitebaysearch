@@ -4,6 +4,9 @@ import ch.ralscha.extdirectspring.annotation.ExtDirectMethod;
 import ch.ralscha.extdirectspring.bean.ExtDirectStoreReadRequest;
 import ch.ralscha.extdirectspring.bean.ExtDirectStoreResult;
 import ch.ralscha.extdirectspring.filter.StringFilter;
+import com.google.common.base.Predicate;
+import com.google.common.collect.Iterables;
+import com.google.common.collect.Lists;
 import com.restfb.Connection;
 import com.restfb.DefaultFacebookClient;
 import com.restfb.FacebookClient;
@@ -14,6 +17,7 @@ import com.scurran.domain.PostCache;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 
 import static ch.ralscha.extdirectspring.annotation.ExtDirectMethodType.STORE_READ;
 
@@ -49,6 +53,11 @@ public class FacebookConnector {
         //List<Post> users = FacebookConnector.getPosts();
         List<KitebayPost> posts = PostCache.getPosts();
 
+        if (storeRequest.getParams().size() > 0) {
+            Map<String, Object> params = storeRequest.getParams();
+            posts = filter(params, posts);
+        }
+
         int totalSize = posts.size();
 
 
@@ -58,6 +67,47 @@ public class FacebookConnector {
         }
 
         return new ExtDirectStoreResult<>(totalSize, posts);
+    }
+
+    //private List<KitebayPost> filter(Map<String, Object> params, List<KitebayPost> posts) {
+
+    private List<KitebayPost> filter(Map<String, Object> params, List<KitebayPost> posts) {
+        final Map<String, Object> localParams = params;
+
+        Iterable<KitebayPost> filter = Iterables.filter(posts, new Predicate<KitebayPost>() {
+            @Override
+            public boolean apply(KitebayPost kitebayPost) {
+                if (localParams.get("leaf").equals(false)) {
+                    return true;
+                } else {
+
+                    if (localParams.get("parent").equals("brand")) {
+                        if (kitebayPost.getBrand().equalsIgnoreCase((String) localParams.get("node"))) {
+                            return true;// may neeed to invert
+                        } else {
+                            return false;
+                        }
+
+                    } else {
+                        String node = (String) localParams.get("node");
+                        if (kitebayPost.getProductEnum().name().equalsIgnoreCase(node)) {
+                            return true;// may neeed to invert
+                        } else {
+                            return false;
+                        }
+
+
+                    }
+                }
+
+
+            }
+        });
+
+
+        List<KitebayPost> newPosts = Lists.newArrayList(filter);
+
+        return newPosts;
     }
 
 

@@ -119,7 +119,7 @@ Ext.define('Starter.controller.Post', {
                 {
                     text: 'Cancel',
                     id: 'cancelbutton',
-                    handler: function() {
+                    handler: function () {
                         dialog.hide();
                     }
 

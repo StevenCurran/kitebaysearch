@@ -31,6 +31,7 @@ public class FacebookPostParser {
         if (message == null) {
             return PostType.FOR_SALE;
         }
+        message = message.toLowerCase();
         if (message.contains("wanted") || message.contains("got") || message.contains("have a") || message.contains("have any") || message.contains("?")) {
             return PostType.WANTED;
         }

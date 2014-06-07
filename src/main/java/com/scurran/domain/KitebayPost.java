@@ -88,6 +88,9 @@ store.each(function(record){
     public String getProduct() {
         return product.getTerm();
     }
+    public Product getProductEnum(){
+        return product;
+    }
 
     public void setProduct(Product product) {
         this.product = product;
