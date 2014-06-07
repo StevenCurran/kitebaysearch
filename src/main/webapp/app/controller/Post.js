@@ -105,7 +105,8 @@ Ext.define('Starter.controller.Post', {
             items: [
                 {
                     xtype: 'label',
-                    text: record.data.message
+                    //text: record.data.message
+                    html: '<a href="' + record.data.link + '" target="_new">' + 'Post Data</a>' + '<br/><p>' + record.data.message + '</p>'
                     //forId: 'alert',
                     //width: 420
                 }
@@ -120,7 +121,7 @@ Ext.define('Starter.controller.Post', {
                     text: 'Cancel',
                     id: 'cancelbutton',
                     handler: function () {
-                        dialog.hide();
+                        dialog.close();
                     }
 
                 }
