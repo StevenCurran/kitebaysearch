@@ -3,7 +3,8 @@ var myForm = new Ext.form.Panel({
     height: 400,
     // title: record.data.id,
     floating: true,
-    closable: true,
+    //closable: false,
+    closeAction: 'hide',
     hidden: true
 });
 
@@ -78,17 +79,55 @@ Ext.define('Starter.controller.Post', {
     },
 
     onItemClick: function (button, record) {
-        this.getDeleteButton().enable();
 
-        myForm.hide();
-        myForm.title = record.data.id;
-        myForm.html = '<a href="' + record.data.link + '" target="_new">' + 'Post Data</a>';
-        console.log(record.data);
+        /*
+         this.getDeleteButton().enable();
 
-//        myForm.close();
+         myForm.hide();
+         myForm.title = record.data.id;
+         myForm.html = '<a href="' + record.data.link + '" target="_new">' + 'Post Data</a>' + '<br/><p>' + record.data.message +'</p>';
+         myForm.show();
+         */
 
+        var dialog = Ext.create('Ext.window.Window', {
+            renderTo: Ext.getBody(),
+            title: record.data.id,
+            itemId: 'addfiledialog',
+            id: 'addfiledialog',
+            modal: true,
+            resizable: true,
+            //width: 500,
+            //height: 300,
+            width: Ext.getBody().getViewSize().width * 0.8,
+            height: Ext.getBody().getViewSize().height * 0.8,
+            layout: 'anchor',
+            resizable: false,
+            items: [
+                {
+                    xtype: 'label',
+                    text: record.data.message
+                    //forId: 'alert',
+                    //width: 420
+                }
+            ],
+            buttons: [
+                {
+                    text: 'OK',
+                    id: 'okbutton',
+                    action: 'addfile'
+                },
+                {
+                    text: 'Cancel',
+                    id: 'cancelbutton',
+                    handler: function() {
+                        dialog.hide();
+                    }
 
-        myForm.show();
+                }
+            ]
+        });
+
+        dialog.show();
 
     },
 

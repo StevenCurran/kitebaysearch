@@ -26,6 +26,10 @@ Ext.define("Starter.model.Post",
             {
                 name: "link",
                 type: "string"
+            },
+            {
+                name: "postType",
+                type: "string"
             }
 
         ],

@@ -26,6 +26,12 @@ Ext.define('Starter.view.PostPanel', {
                 },
                 {
                     xtype: 'gridcolumn',
+                    dataIndex: 'postType',
+                    text: 'Sale Type',
+                    flex: 1
+                },
+                {
+                    xtype: 'gridcolumn',
                     dataIndex: 'message',
                     text: 'Post Content',
                     flex: 10,

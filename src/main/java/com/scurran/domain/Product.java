@@ -6,7 +6,7 @@ package com.scurran.domain;
 public enum Product implements MenuItem {
 
 
-    FOIL("Foil"), LEI("Water"), RACE_BOARD("Race Board"), TT_BOARD("Twin Tip"), WAKE_BOARD("Wake Style"), SURF_BOARD("Surf"), WETSUIT("Wetsuit"), HARNESS("Harness"), ACCESSORY("Accessory");
+    FOIL("Foil"), LEI("Water"), RACE_BOARD("Race Board"), TT_BOARD("Twin Tip"), WAKE_BOARD("Wake Style"), SURF_BOARD("Surf"), WETSUIT("Wetsuit"), HARNESS("Harness"), ACCESSORY("Accessory"), BAR("Bar");
 
     private final String term;
 

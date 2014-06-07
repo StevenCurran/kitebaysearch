@@ -69,8 +69,8 @@ store.each(function(record){
         this.initialPost = initialPost;
     }
 
-    public PostType getPostType() {
-        return type;
+    public String getPostType() {
+        return type.getType();
     }
 
     public void setType(PostType type) {
