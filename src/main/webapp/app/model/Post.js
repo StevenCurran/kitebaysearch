@@ -22,6 +22,10 @@ Ext.define("Starter.model.Post",
             {
                 name: "brand",
                 type: "string"
+            },
+            {
+                name: "link",
+                type: "string"
             }
 
         ],

@@ -82,6 +82,8 @@ Ext.define('Starter.controller.Post', {
 
         myForm.hide();
         myForm.title = record.data.id;
+        myForm.html = '<a href="' + record.data.link + '" target="_new">' + 'Post Data</a>';
+        console.log(record.data);
 
 //        myForm.close();
 

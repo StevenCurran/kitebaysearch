@@ -115,4 +115,9 @@ store.each(function(record){
     public Date getUpdatedTime() {
         return initialPost.getUpdatedTime();
     }
+
+    @Override
+    public String getLink() {
+        return initialPost.getActions().get(0).getLink();
+    }
 }
