@@ -5,6 +5,7 @@ import com.restfb.DefaultFacebookClient;
 import com.restfb.FacebookClient;
 import com.restfb.Parameter;
 import com.restfb.types.Post;
+import com.scurran.domain.FacebookPostParser;
 import com.scurran.domain.KitebayPost;
 import com.scurran.domain.PostCache;
 import org.springframework.stereotype.Component;
@@ -44,13 +45,13 @@ public class CachePopulator {
 
             FacebookClient facebookClient = new DefaultFacebookClient(new DefaultFacebookClient().obtainAppAccessToken(MY_ACCESS_TOKEN, MY_APP_SECRET).getAccessToken());
             Connection<Post> kitebayPosts = facebookClient.fetchConnection(KITEBAY_PID + "/feed", Post.class, Parameter.with("limit", "250"));
-
+/*
             List<KitebayPost> posts = new ArrayList<>();
             for (Post post : kitebayPosts.getData()) {
                 posts.add(new KitebayPost(post));
             }
-
-            PostCache.addPosts(posts);
+*/
+            PostCache.addPosts(FacebookPostParser.parsePosts(kitebayPosts.getData()));
         }
     }
 

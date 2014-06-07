@@ -14,6 +14,14 @@ Ext.define("Starter.model.Post",
             {
                 name: "updatedTime",
                 type: "string"
+            },
+            {
+                name: "product",
+                type: "string"
+            },
+            {
+                name: "brand",
+                type: "string"
             }
 
         ],

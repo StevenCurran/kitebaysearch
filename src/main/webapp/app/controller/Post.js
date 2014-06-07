@@ -1,9 +1,9 @@
 var myForm = new Ext.form.Panel({
     width: 500,
     height: 400,
-   // title: record.data.id,
+    // title: record.data.id,
     floating: true,
-    closable : true,
+    closable: true,
     hidden: true
 });
 
@@ -66,9 +66,11 @@ Ext.define('Starter.controller.Post', {
         var myStore = this.getPostsStore();
         if (newValue) {
             myStore.clearFilter(true);
-            //myStore.filter('filter', newValue); //fiter by text
-            myStore.filter('message', '/' + newValue + '/'); //fiter by text
-            console.log('/' + newValue + '/');
+            myStore.filterBy(function (rec, id) {
+                var message = rec.get("message") || " ";
+                return (message.toLowerCase().indexOf(newValue.toLowerCase()) != -1);
+            });
+
         } else {
             myStore.clearFilter();
         }
@@ -88,8 +90,8 @@ Ext.define('Starter.controller.Post', {
 
     },
 
-    onMouseEnter : function(theitem, record, item, index, e, eOpts){
-        console.log(record.data.id);
+    onMouseEnter: function (theitem, record, item, index, e, eOpts) {
+//        console.log(record.data.id);
 
     },
 

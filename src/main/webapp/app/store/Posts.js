@@ -8,13 +8,15 @@ var DateSorter = function (o1, o2) {
 };
 
 Ext.define('Starter.store.Posts', {
+    id: 'PostsStore',
     extend: 'Ext.data.Store',
     model: 'Starter.model.Post',
     autoLoad: true,
-    pageSize: 25,
+    pageSize: 200,
     remoteSort: true,
     remoteFilter: true,
     autoSync: true,
+    //buffered: true, //this breaks filterby for some reason
     sorters: [DateSorter ]
 
 });

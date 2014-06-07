@@ -11,7 +11,27 @@ public enum Brand {
     FONE("F-One"),
     OZONE("Ozone"),
     CABRINHA("Cabrinha"),
-    AIRRUSH("Airrush");
+    AIRUSH("Airush"),
+    FLYSURFER("Flysurfer"),
+    XENON("Xenon"),
+    RPM("RPM"),
+    NORTH("North"),
+    SLINGSHOT("Slingshot"),
+    HYPERLITE("Hyperlite"),
+    LINES("Lines"),
+    SHINN("Shinn"),
+    MYSTIC("Mystic"),
+    LIQUID_FORCE("Liquid Force"),
+    BRUNOTTI("Brunotti"),
+    WAINMAN("Wainman"),
+    SCRUB("Scrub"),
+    RRD("RRD"),
+    NOBILE("NOBILE"),
+    TAKOON("Takoon"),
+    ION("ION"),
+    CRAZYFLY("Crazyfly"),
+    BLADE("Blade"),
+    UNKNOWN("Brand Unknown");
 
     private final String brand;
 
@@ -28,3 +48,4 @@ public enum Brand {
         return getBrandName();
     }
 }
+

@@ -77,16 +77,16 @@ store.each(function(record){
         this.type = type;
     }
 
-    public Brand getBrand() {
-        return brand;
+    public String getBrand() {
+        return brand.getBrandName();
     }
 
     public void setBrand(Brand brand) {
         this.brand = brand;
     }
 
-    public Product getProduct() {
-        return product;
+    public String getProduct() {
+        return product.getTerm();
     }
 
     public void setProduct(Product product) {
