@@ -7,15 +7,15 @@ import ch.ralscha.extdirectspring.filter.StringFilter;
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
-import com.restfb.Connection;
-import com.restfb.DefaultFacebookClient;
-import com.restfb.FacebookClient;
-import com.restfb.Parameter;
+import com.restfb.*;
+import com.restfb.json.JsonArray;
+import com.restfb.json.JsonObject;
 import com.restfb.types.Post;
 import com.scurran.domain.KitebayPost;
 import com.scurran.domain.PostCache;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -66,7 +66,55 @@ public class FacebookConnector {
                     Math.min(totalSize, storeRequest.getStart() + storeRequest.getLimit()));
         }
 
+        if (posts.size() > 0) {
+            getPostDetails("283893765028577_667349830016300");
+        }
+
         return new ExtDirectStoreResult<>(totalSize, posts);
+    }
+
+    @ExtDirectMethod
+    public KitebayPost getPostDetails(String message) {
+        KitebayPost post = null;
+        for (KitebayPost kitebayPost : PostCache.getPosts()) {
+            if (kitebayPost.getId().equalsIgnoreCase(message)) {
+                post = kitebayPost;
+                break;
+            }
+        }
+
+        try {
+
+            //get the image urls of the post. just tac on the image urls here.
+            Post kitebayPosts = facebookClient.fetchObject(post.getId(), Post.class, Parameter.with("fields", "object_id"));
+            String objectId = kitebayPosts.getObjectId();
+            //Post kitebayPostsObj = facebookClient.fetchObject(objectId, Post.class, Parameter.with("fields", "picture"));
+            JsonObject kitebayPostsObj = facebookClient.fetchObject(objectId, JsonObject.class, Parameter.with("/", "picture"));
+
+            List<String> imageUrls = new ArrayList<>();
+            //imageUrls.add(kitebayPostsObj.getString("source"));
+
+            String query = "SELECT attachment FROM stream WHERE post_id=\"" + kitebayPosts.getId() + "\"";
+
+            System.out.println(query);
+            List<JsonObject> kitebayPostsObj2 = facebookClient.executeFqlQuery(query, JsonObject.class);
+            JsonArray jsonArray = kitebayPostsObj2.get(0).getJsonObject("attachment").getJsonArray("media");
+
+            for (int i = 0; i < jsonArray.length(); i++) {
+                JsonObject obj = jsonArray.getJsonObject(i);
+                String src = obj.getString("src");
+                src = src.replace("_s.jpg", "_n.jpg");
+                imageUrls.add(src);
+            }
+            //fix here
+
+            post.setPostImages(imageUrls);
+
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+
+        return post;
     }
 
     //private List<KitebayPost> filter(Map<String, Object> params, List<KitebayPost> posts) {
@@ -110,5 +158,20 @@ public class FacebookConnector {
         return newPosts;
     }
 
+
+    public static class MyUser {
+
+        @Facebook
+        String uid;
+
+        @Facebook
+        String url;
+
+        public MyUser() {
+
+        }
+
+
+    }
 
 }

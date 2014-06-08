@@ -22,7 +22,7 @@ public class FacebookPostParser {
         return myPosts;
     }
 
-    private static List<Photo.Image> getImageUrls(Post post) {
+    private static List<String> getImageUrls(Post post) {
         return Collections.emptyList();
     }
 

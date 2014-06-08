@@ -11,7 +11,7 @@ public class KitebayPostBuilder {
     private PostType type;
     private Brand brand;
     private Product product;
-    private List<Photo.Image> postImages;
+    private List<String> postImages;
 
 
     public KitebayPostBuilder setPostId(String postId) {
@@ -39,7 +39,7 @@ public class KitebayPostBuilder {
         return this;
     }
 
-    public KitebayPostBuilder setPostImages(List<Photo.Image> postImages) {
+    public KitebayPostBuilder setPostImages(List<String> postImages) {
         this.postImages = postImages;
         return this;
     }

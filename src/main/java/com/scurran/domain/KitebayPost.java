@@ -16,7 +16,8 @@ public class KitebayPost extends Post {
     private PostType type;
     private Brand brand;
     private Product product;
-    private List<Photo.Image> postImages;
+    //private List<Photo.Image> postImages;
+    private List<String> postImages;
 /*
 
 
@@ -36,7 +37,7 @@ store.each(function(record){
  */
 
 
-    public KitebayPost(String postId, Post initialPost, PostType type, Brand brand, Product product, List<Photo.Image> postImages) {
+    public KitebayPost(String postId, Post initialPost, PostType type, Brand brand, Product product, List<String> postImages) {
         this.postId = postId;
         this.initialPost = initialPost;
         this.type = type;
@@ -96,11 +97,11 @@ store.each(function(record){
         this.product = product;
     }
 
-    public List<Photo.Image> getPostImages() {
+    public List<String> getPostImages() {
         return postImages;
     }
 
-    public void setPostImages(List<Photo.Image> postImages) {
+    public void setPostImages(List<String> postImages) {
         this.postImages = postImages;
     }
 
